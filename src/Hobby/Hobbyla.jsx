@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
+import hobby from "./hobby.json";
 
 const Hobbyla = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,29 +10,6 @@ const Hobbyla = () => {
     setSearchQuery(e.target.value);
   };
 
-  const hobby = [
-    {
-      id: 1,
-      link: "/hobby",
-      title: "Hobby Entry #1",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 2,
-      link: "/hobby",
-      title: "Hobby Entry #2",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 3,
-      link: "/hobby",
-      title: "Hobby Entry #3",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-  ];
 
   const filteredHobby = hobby.filter(
     (hobby) =>

@@ -1,0 +1,23 @@
+[
+    {
+      "id": "1",
+      "link": "/blog",
+      "title": "Blog Entry #1",
+      "text": "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
+      "smallText": "Last updated 3 mins ago"
+    },
+    {
+      "id": "2",
+      "link": "/blog",
+      "title": "Blog Entry #2",
+      "text": "This card has supporting text below as a natural lead-in to additional ... Click to read more.......",
+      "smallText": "Last updated 3 mins ago"
+    },
+    {
+      "id": "3",
+      "link": "/blog",
+      "title": "Blog Entry #3",
+      "text": "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
+      "smallText": "Last updated 3 mins ago"
+    }
+  ]

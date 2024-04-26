@@ -2,7 +2,12 @@ import React from 'react'
 
 const HobbylaPage = () => {
   return (
-    <div>HobbylaPage</div>
+    <div>
+      {/* title */}
+      <h1 className="hobbyLaTitle">
+        Hobby-La
+      </h1>
+    </div>
   )
 }
 

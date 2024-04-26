@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
+import blogs from "./blog.json";
+
 // import Content from "./blogFunctions/ReadMore";
 
 const Blog = () => {
@@ -10,30 +12,6 @@ const Blog = () => {
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
-
-  const blogs = [
-    {
-      id: 1,
-      link: "/blog",
-      title: "Blog Entry #1",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 2,
-      link: "/blog",
-      title: "Blog Entry #2",
-      text: "This card has supporting text below as a natural lead-in to additional ... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 3,
-      link: "/blog",
-      title: "Blog Entry #3",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-  ];
 
   const filteredBlogs = blogs.filter(
     (blog) =>

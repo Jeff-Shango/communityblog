@@ -2,36 +2,13 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
+import tutorial from "./tutorials.json";
 
 const Tutorials = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
-
-  const tutorial = [
-    {
-      id: 1,
-      link: "/tutorial",
-      title: "Tutorial Entry #1",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 2,
-      link: "/tutorial",
-      title: "Tutorial Entry #2",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 3,
-      link: "/tutorial",
-      title: "Tutorial Entry #3",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-  ];
 
   const filteredTutorial = tutorial.filter(
     (tutorial) =>

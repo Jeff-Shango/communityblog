@@ -2,36 +2,13 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
+import news from "./news.json";
 
 const News = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
-
-  const news = [
-    {
-      id: 1,
-      link: "/news",
-      title: "news Entry #1",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 2,
-      link: "/news",
-      title: "news Entry #2",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-    {
-      id: 3,
-      link: "/news",
-      title: "news Entry #3",
-      text: "This is a wider card with supporting text below as a natural lead-in to additional... Click to read more.......",
-      smallText: "Last updated 3 mins ago",
-    },
-  ];
 
   const filterednews = news.filter(
     (news) =>
