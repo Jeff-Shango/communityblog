@@ -11,7 +11,7 @@ const Navlinks = () => {
       {/* Menu Container */}
       <Navbar expand="md" variant="dark" id="menuContainer">
         <h3 to="https//:bozierwedding.netlify.app" id="logoLink">
-          <a href="https://jeffbozier.netlify.app">
+          <a href="/">
             <img src={logo} alt="issa" />
           </a>
         </h3>
@@ -19,7 +19,7 @@ const Navlinks = () => {
         <Navbar.Collapse id="responsive-navbar-nav navContainer">
           <Nav className="mr-auto navContainer">
             <div className="linkSingleContainer">
-            <Link id="dashLink" className="newsButton" to="/">
+            <Link id="dashLink" className="newsButton" to="/news">
               <h3>News</h3>
               <img src={newsCoo} alt="newsCoo" className="newsImg" />
             </Link>

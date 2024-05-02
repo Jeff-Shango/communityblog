@@ -21,7 +21,7 @@ function App() {
         </div>
       }/>
       <Route path="/blog" element={<BlogPage/>}/>
-      <Route path="/hobby" element={<HobbylaPage/>}/> 
+      <Route path="/hobbyla" element={<HobbylaPage/>}/> 
       <Route path="/tutorial" element={<TutorialsPage/>}/>
       <Route path="/artapp" element={<ArtAppPage/>}/>
       <Route path="/news" element={<NewsPage/>}/>

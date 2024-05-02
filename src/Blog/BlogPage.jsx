@@ -3,11 +3,14 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
 import blogs from "./blog.json";
+import Navlinks from "../Navbar/Navlinks";
+import axios from "axios";
 
 // import Content from "./blogFunctions/ReadMore";
 
 const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
@@ -19,10 +22,25 @@ const BlogPage = () => {
       blog.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
       blog.smallText.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  // }
+
+
+    const handleFileUpload = (event) => {
+      setSelectedFile(event.target.files[0]);
+    };
+
+    const handleUpload = () => {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      axios.post('http://localhost:5000/api/upload', formData).then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+    };
 
   return (
     <>
+      <Navlinks/>
       <h1 className="dashTitle">Blogs</h1>
       <div className="filterContainer">
         <input
@@ -31,6 +49,11 @@ const BlogPage = () => {
           value={searchQuery}
           onChange={handleSearchInputChange}
         />
+      </div>
+      <div>
+        <h3>Upload File</h3>
+        <input type="file" onChange={handleFileUpload} />
+        <button onClick={handleUpload}>Upload</button>
       </div>
       <CardGroup>
         {filteredBlogs.map((blog) => (
