@@ -7,6 +7,7 @@ import HobbylaPage from "./Hobby/HobbylaPage";
 import TutorialsPage from "./Tutorials/TutorialsPage";
 import ArtAppPage from "./Art/ArtAppPage";
 import NewsPage from "./News/NewsPage";
+import ContactPage from "./Contact/ContactPage.jsx";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       <Route path="/tutorial" element={<TutorialsPage/>}/>
       <Route path="/artapp" element={<ArtAppPage/>}/>
       <Route path="/news" element={<NewsPage/>}/>
-      
+      <Route path="/contact" element={<ContactPage/>}/>
       </Routes>
     </div>
     </BrowserRouter>

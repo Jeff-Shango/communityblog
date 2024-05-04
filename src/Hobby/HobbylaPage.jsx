@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
 import hobby from "./hobby.json";
+import Navlinks from "../Navbar/Navlinks";
 
 const HobbylaPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,6 +21,7 @@ const HobbylaPage = () => {
 
   return (
     <>
+      <Navlinks/>
       <h1 className="dashTitle">Hobby</h1>
       <div className="filterContainer">
         <input

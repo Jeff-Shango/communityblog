@@ -37,13 +37,13 @@ const Navlinks = () => {
             </Link>
             </div>
             <div className="linkSingleContainer">
-            <Link id="dashLink" to="/tutorials">
+            <Link id="dashLink" to="/tutorial">
               <h3>Tutorials</h3>
               <img src={newsCoo} alt="newsCoo" className="newsImg" />
             </Link>
             </div>
             <div className="linkSingleContainer">
-            <Link id="dashLink" to="/art">
+            <Link id="dashLink" to="/artapp">
               <h3>Art</h3>
               <img src={newsCoo} alt="newsCoo" className="newsImg" />
             </Link>
