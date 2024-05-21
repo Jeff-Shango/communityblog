@@ -7,20 +7,21 @@ import axios from "axios";
 import Navlinks from "../Navbar/Navlinks.jsx";
 import NewsItem from "./NewsItem.js";
 import "../.env";
-// require('dotenv').config({ path: "../.env"});
 
-const apiKey = process.env.REACT_APP_API_KEY;
-
-// const url =
-//   `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
-
+// const apiKey = process.env.REACT_APP_API_KEY;
   
-  const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
+const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
+
 
 
 const NewsPage = () => {
   const [articles, setArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const scrollALong = `https://api.instagram.com/oauth/authorize
+  ?client_id=${process.env.REACT_APP_SCROLL_LONG_APP_ID}
+  &redirect_uri=http://localhost:3000
+  &scope=user_profile,user_media
+  &response_type=code`
 
   useEffect(() => {
     const getArticles = async () => {
@@ -86,6 +87,8 @@ const NewsPage = () => {
   return (
     <>
       <Navlinks/> 
+
+      <a className="testBox" href={scrollALong}>What it do, doe?</a>
       <h1 className="dashTitle">News</h1>
       <div className="filterContainer">
         <input
