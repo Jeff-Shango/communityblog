@@ -4,8 +4,11 @@ import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
 import news from "./news.json";
 import axios from "axios";
+import NewsItem from "./NewsItem.js";
 
-const url = "https://newsapi.org/v2/everything?q=events&Baltimore&from=2024-05-01&to=2024-05-20&language=en&sortBy=publishedAt&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
+const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
+
+// const url = "https://newsapi.org/v2/everything?q=events&Baltimore&from=2024-05-01&to=2024-05-20&language=en&sortBy=publishedAt&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
 
 const News = () => {
   const [articles, setArticles] = useState([]);
@@ -39,11 +42,11 @@ const filterRemovedArticles = (articles) => {
     );
   };
   
-  const filterednews = news.filter(
-    (news) =>
-    news.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    news.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    news.smallText.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredArticles = filterRemovedArticles.filter(
+    (article) =>
+    article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    article.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    article.smallText.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -58,17 +61,17 @@ const filterRemovedArticles = (articles) => {
         />
       </div>
       <CardGroup>
-        {filterednews.map((news) => (
-          <Card key={news.id}>
-            <Card.Img variant="top" src={logo} />
+        {filteredArticles.map((article, index) => (
+          <Card key={index}>
+            <Card.Img variant="top" src={article.urlToImage || logo} />
             <Card.Body>
-              <Card.Title>{news.title}</Card.Title>
-              <Card.Text>{news.text}</Card.Text>
+              <Card.Title>{article.title}</Card.Title>
+              <Card.Text>{article.description}</Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">{news.smallText}</small>
             </Card.Footer>
-            <a href={news.link} className="btn stretched-link">
+            <a href={article.url} className="btn stretched-link">
               Click Card to go to news
             </a>
           </Card>
