@@ -5,9 +5,12 @@ import logo from "../assets/logoSolo.png";
 import axios from "axios";
 import NewsItem from "./NewsItem.js";
 
-const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
 
 // const url = "https://newsapi.org/v2/everything?q=events&Baltimore&from=2024-05-01&to=2024-05-20&language=en&sortBy=publishedAt&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
+const apiKey = process.env.REACT_APP_API_KEY;
+const keywords = "peaceful OR wholesome OR uplifting OR positive OR inspirational OR good news";
+const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(keywords)}&language=en&apiKey=${apiKey}`;
+
 
 const News = () => {
   const [articles, setArticles] = useState([]);
