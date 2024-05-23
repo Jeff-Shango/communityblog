@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import logo from "../assets/logoSolo.png";
-import news from "./news.json";
 import axios from "axios";
 import NewsItem from "./NewsItem.js";
 
@@ -13,42 +12,50 @@ const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=52db9c6c0b4f
 const News = () => {
   const [articles, setArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
   
   useEffect(() => {
     const getArticles = async () => {
-    try {
-      const response = await axios.get(url);
-      setArticles(response.data.articles);
-      console.log(response);
-    } catch (error) {
-      console.log("Error fetching the artcles:", error);
-    }
-  };
-  
-  const interval = setInterval(() => {
-    getArticles();
-  }, 6000); 
-  return() => clearInterval(interval);
-} );
+      try {
+        const response = await axios.get(url);
+        setArticles(response.data.articles);
+        console.log(response);
+      } catch (error) {
+        console.log("Error fetching the articles:", error);
+      }
+    };
 
-const filterRemovedArticles = (articles) => {
-  if (!articles) return [];
-  return articles.filter(
-    (article) => 
-    article.title !== "[Removed]" && article.author !== "[Removed]"
+    getArticles(); // Fetch articles on component mount
+
+    const interval = setInterval(() => {
+      getArticles();
+    }, 6000); // Fetch articles every 6 seconds
+
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, []);
+
+  const filterRemovedArticles = (articles) => {
+    if (!articles) return [];
+    return articles.filter(
+      (article) => article.title !== "[Removed]" && article.author !== "[Removed]"
     );
   };
-  
-  const filteredArticles = filterRemovedArticles.filter(
+
+  const filteredArticles = filterRemovedArticles(articles).filter(
     (article) =>
-    article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    article.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    article.smallText.toLowerCase().includes(searchQuery.toLowerCase())
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (article.description && article.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (article.content && article.content.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: "long", day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+ 
   return (
     <>
       <h1 className="dashTitle">News</h1>
@@ -61,7 +68,7 @@ const filterRemovedArticles = (articles) => {
         />
       </div>
       <CardGroup>
-        {filteredArticles.map((article, index) => (
+        {filteredArticles.slice(0,3).map((article, index) => (
           <Card key={index}>
             <Card.Img variant="top" src={article.urlToImage || logo} />
             <Card.Body>
@@ -69,9 +76,9 @@ const filterRemovedArticles = (articles) => {
               <Card.Text>{article.description}</Card.Text>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">{news.smallText}</small>
+              <small className="text-muted">{formatDate(article.publishedAt)}</small>
             </Card.Footer>
-            <a href={article.url} className="btn stretched-link">
+            <a href={article.url} target="_blank" rel="noreferrer" className="btn stretched-link">
               Click Card to go to news
             </a>
           </Card>

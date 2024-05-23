@@ -6,11 +6,10 @@ import axios from "axios";
 // import news from "./news.json";
 import Navlinks from "../Navbar/Navlinks.jsx";
 import NewsItem from "./NewsItem.js";
-import "../.env";
 
 // const apiKey = process.env.REACT_APP_API_KEY;
   
-const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=52db9c6c0b4f48d7b8bd6e9739770fd2";
+const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=";
 
 
 
